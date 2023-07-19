@@ -1,0 +1,110 @@
+{
+  "exercise_01_1": {
+    "input": {
+      "arr1": [
+        "3",
+        3,
+        3,
+        3,
+        3,
+        4,
+        4,
+        4
+      ],
+      "arr2": [
+        "avd",
+        1,
+        3,
+        3
+      ]
+    },
+    "output": [
+      3
+    ]
+  },
+  "exercise_01_2": {
+    "input": {
+      "arr1": [
+        "3",
+        3,
+        3,
+        3,
+        3,
+        4,
+        4,
+        4
+      ],
+      "arr2": [
+        "avd",
+        1,
+        3,
+        3
+      ]
+    },
+    "output": [
+      "3",
+      3,
+      4,
+      "avd",
+      1
+    ]
+  },
+  "exercise_02": {
+    "input": "nguyen tuan thanh",
+    "output": "Nguyen Tuan Thanh"
+  },
+  "exercise_03": {
+    "input": [
+      0,
+      -1,
+      -5
+    ],
+    "output": "even"
+  },
+  "exercise_04": {
+    "input": {
+      "a": 7,
+      "b": 2,
+      "c": 3,
+      "d": 13
+    },
+    "output": {
+      "a + b": 9,
+      "c - d": -10,
+      "(a+b)*(c-d)": -90,
+      "(a+b)*(c-d)/a": -6
+    }
+  },
+  "exercise_05": {
+    "input": "test",
+    "ouput": "es"
+  },
+  "exercise_06": {
+    "input": 123456789,
+    "output": 987654321
+  },
+  "exercise_07": {
+    "input": "AAAABBBCCDAABBB",
+    "output": [
+      "A",
+      "B",
+      "C",
+      "D",
+      "A",
+      "B"
+    ]
+  },
+  "exercise_08": {
+    "input": [
+      8,
+      2,
+      11,
+      100,
+      4,
+      8,
+      2602,
+      36
+    ],
+    "output": 11
+  }
+}
