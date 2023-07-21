@@ -6,8 +6,10 @@ const sum_is_odd_even = arr => {
     const sum_arr = arr.reduce((accumulator, currentValue) => {
         return accumulator + currentValue;
     })
-    // sum is even or odd
-    return sum_arr % 2 === 0 ? 'even' : 'odd';
+    //check sum is even or odd and return
+    if(sum_arr % 2 == 0)
+        return 'even';
+    return 'old';
 }
 
 console.log(sum_is_odd_even(arr));

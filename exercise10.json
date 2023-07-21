@@ -9,16 +9,22 @@
         3,
         4,
         4,
-        4
+        4,
+        "   ",
+        ""
       ],
       "arr2": [
         "avd",
         1,
         3,
-        3
+        3,
+        "",
+        " "
       ]
     },
     "output": [
+      "",
+      " ",
       3
     ]
   },
@@ -32,26 +38,29 @@
         3,
         4,
         4,
-        4
+        4,
+        ""
       ],
       "arr2": [
         "avd",
         1,
         3,
-        3
+        3,
+        "   "
       ]
     },
     "output": [
+      "",
+      " ",
+      1,
       "3",
-      3,
       4,
-      "avd",
-      1
+      "avd"
     ]
   },
   "exercise_02": {
-    "input": "nguyen tuan thanh",
-    "output": "Nguyen Tuan Thanh"
+    "input": "   toi ten la abcd 5678    ",
+    "output": "Toi Ten La Abcd 5678"
   },
   "exercise_03": {
     "input": [
@@ -69,15 +78,15 @@
       "d": 13
     },
     "output": {
-      "a + b": 9,
-      "c - d": -10,
-      "(a+b)*(c-d)": -90,
-      "(a+b)*(c-d)/a": -6
+      "sum of a and b": 9,
+      "c minus b": -10,
+      "sum multiplied minus": -90,
+      "multiplied modulo a": -6
     }
   },
   "exercise_05": {
     "input": "test",
-    "ouput": "es"
+    "output": "es"
   },
   "exercise_06": {
     "input": 123456789,
@@ -105,6 +114,6 @@
       2602,
       36
     ],
-    "output": 11
+    "output": 1
   }
 }

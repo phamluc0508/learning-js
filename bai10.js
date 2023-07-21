@@ -1,201 +1,251 @@
+const format_whitespace = arr => {
+    // loop through elements of arr
+    const arr_format = arr.map(val => {
+        // check val has more than a whitespace
+        if (typeof val === 'string' && val.length !== 0 && val.trim().length === 0)
+        // return a whitespace
+            return ' ';
+        // return normal val
+        return val;
+    })
+    return arr_format;
+}
 const find_element_same = (arr1, arr2) => {
-    //create object
-    const obj = {};
-    //save input to obj
-    obj["input"] = {
-        "arr1": arr1,
-        "arr2": arr2
+    // create object
+    obj={}
+    // save input
+    obj['input'] = {
+        'arr1': arr1,
+        'arr2': arr2
     }
-    //create array of output
+    //format array
+    arr1_format = format_whitespace(arr1);
+    arr2_format = format_whitespace(arr2);
+    // create array store resule
     const arr3 = [];
     // loop through elements of arr1
-    arr1.forEach(val => {
-        // get the same elements
-        if (arr2.indexOf(val) >= 0 && arr3.indexOf(val) === -1)
+    arr1_format.forEach(val => {
+        // check arr2 has val and arr3 have no val
+        if (arr2_format.indexOf(val) >= 0 && arr3.indexOf(val) === -1)
+            //val is same and get val to arr3
             arr3.push(val);
     });
-    //save output to obj
-    obj["output"] = arr3;
+    // save output
+    obj['output'] = arr3.sort();
     return obj;
 }
 const find_element_different = (arr1, arr2) => {
-    //create object
-    const obj = {};
-    //save input to obj
-    const copy_arr2 = [...arr2]
-    obj["input"] = {
-        "arr1": arr1,
-        "arr2": copy_arr2
+    // create object
+    obj={}
+    // save input
+    obj['input'] = {
+        'arr1': arr1,
+        'arr2': arr2
     }
-
-    //create array of output
+    //format array
+    arr1_format = format_whitespace(arr1);
+    arr2_format = format_whitespace(arr2);
+    // create array store resule
     const arr3 = [];
+    // elements of arr appear only one
+    var set1 = new Set(arr1_format);
+    var set2 = new Set(arr2_format);
+    // set to array
+    const copy_arr1 = [...set1];
+    const copy_arr2 = [...set2];
     // loop through elements of arr1
-    arr1.forEach(val => {
-        // get the different elements of arr1
-        if (arr2.indexOf(val) === -1 && arr3.indexOf(val) === -1)
+    copy_arr1.forEach(val => {
+        // check arr2 has no val and arr3 have no val
+        if (copy_arr2.indexOf(val) === -1 && arr3.indexOf(val) === -1)
+            //val is different and get val to arr3
             arr3.push(val);
         else
-            // deconste the same elements of arr2
-            while (arr2.indexOf(val) >= 0)
-                arr2.splice(arr2.indexOf(val), 1);
+            //  check arr2 has val will delete
+            while (copy_arr2.indexOf(val) >= 0)
+                copy_arr2.splice(copy_arr2.indexOf(val), 1);
     });
-    //save output to obj
-    obj["output"] = [...arr3, ...arr2];
+    // save output
+    obj['output'] = [...arr3, ...copy_arr2].sort();
     return obj;
 }
 const to_upper_first_character = string => {
-    //create object
-    const obj = {};
-    //save input to obj
-    obj["input"] = string;
-    //edit form string
+    // create object
+    obj={}
+    // save input
+    obj['input'] = string
+    // add whitespace and string prepare for loop 
     string = ' ' + string;
     var i = 1;
-    //loop through character of string
+    // loop through character of string
     while (i < string.length) {
-        // Uppercase first characters
+        // check space before character is Uppercase character
         if (string[i] !== ' ' && string[i - 1] === ' ')
             string = string.substring(0, i) + string[i].toUpperCase() + string.substring(i + 1);
         i++;
     }
-    //save output to obj
-    obj["output"] = string.trim();
+    // save output
+    obj['output'] = string.trim();
     return obj;
 }
 const sum_is_odd_even = arr => {
-    //create object
-    const obj = {};
-    //save input to obj
-    obj["input"] = arr;
-    //array is empty
-    if (arr.length === 0) return 'even';
-    //sum of array
+    // create object
+    obj={}
+    // save input
+    obj['input'] = arr;
+    // array is empty
+    if (arr.length === 0) 
+        // save output
+        obj['output'] =  'even';
+    // sum of array
     const sum_arr = arr.reduce((accumulator, currentValue) => {
         return accumulator + currentValue;
     })
-    //save output to obj
-    obj["output"] = sum_arr % 2 === 0 ? 'even' : 'odd';
+    //check sum is even or odd and return
+    if(sum_arr % 2 == 0)
+        // save output
+        obj['output'] =  'even';
+    else
+        // save output
+        obj['output'] =  'old';
     return obj;
 }
 const lots_of_math = (a, b, c, d) => {
-    //create object
-    const obj = {};
-    //save input to obj
-    obj["input"] = {
-        "a": a,
-        "b": b,
-        "c": c,
-        "d": d
+    // create object
+    obj={}
+    // save input
+    obj['input'] = {
+        'a': a,
+        'b': b,
+        'c': c,
+        'd': d
     };
-    //the sum of a and b
+    // print the sum of a and b
     const sum = a + b;
-    //console.log(`sum of a and b: ${sum}`);
-    //c minus d
+    // print c minus d
     const minus = c - d;
-    //console.log(`c minus b: ${minus}`);
-    //the first number printed, multiplied by the second number printed
+    // print the first number printed, multiplied by the second number printed
     const multiplied = sum * minus;
-    //console.log(`sum multiplied minus: ${multiplied}`);
-    //the third number printed modulo a
-    const modulo = multiplied % a === -0 ? 0 : multiplied % a;
-    //save output to obj
-    obj["output"] = {
-        "a + b": sum,
-        "c - d": minus,
-        "(a+b)*(c-d)": multiplied,
-        "(a+b)*(c-d)/a": modulo
+    // print 3 modulo a
+    const modulo = multiplied % a;
+    // save ouput
+    obj['output']= {
+        'sum of a and b': sum,
+        'c minus b': minus,
+        'sum multiplied minus': multiplied,
+        'multiplied modulo a': modulo
     }
     return obj;
 }
 const middle_character = string => {
-    //create object
-    const obj = {};
-    //save input to obj
-    obj["input"] = string;
-    //get middle index
+    // create object
+    obj={}
+    // save input
+    obj['input'] = string;
+    // get middle index
     const index_middle = Math.floor(string.length / 2) - 1;
-    //get middle character
-    const middle_string = string.length % 2 === 0 ? string.substring(index_middle, index_middle + 2) : string.substring(index_middle + 1, index_middle + 2);
-    //save output to obj
-    obj["ouput"] = middle_string;
+    // create variable save result
+    let result; 
+    // check string's length is even or odd
+    if(string.length % 2 === 0)
+        // length is even: get 2 elements in middle index 
+        result = string.substring(index_middle, index_middle + 2);
+    else
+        // length is odd: get element in middle index 
+        result = string.substring(index_middle + 1, index_middle + 2);
+    //save output
+    obj['output'] = result;
     return obj;
 }
 const highest_number = number => {
-    //create object
-    const obj = {};
-    //save input to obj
-    obj["input"] = number;
+    // create object
+    obj={}
+    // save input
+    obj['input'] = number;
     //number to string
     const string = String(number);
     //sort descending
     const string_sorted = string.split('').sort((a, b) => b - a).join('');
-    //highest_number
-    const highest = parseInt(string_sorted);
-    //save output to obj
-    obj["output"] = highest;
+    //highest_number's type is number
+    let highest_number = parseInt(string_sorted);
+    //save output
+    obj['output'] = highest_number;
     return obj;
 }
 const unique_in_order = arr => {
-    //change string to array
-    let copy_arr = arr;
-    if(typeof arr === 'string')
-        arr = arr.split('');
-    else 
-        copy_arr = [...arr];
-    //create object
-    const obj = {};
-    //save input to obj
-    obj["input"] = copy_arr;
-    //remove identical elements
-    var i=0;
-    while(i<arr.length-1){
-        const j=i+1;
-        while(arr[i] === arr[j])
-            arr.splice(j,1);
-        i++;
+    // create object
+    obj={}
+    // save input
+    obj['input'] = arr;
+    // change string to array
+    let copy_arr;
+    if (typeof arr === 'string') {
+        copy_arr = arr.split('');
     }
-    //save output to obj
-    obj["output"] = arr;
+    else
+        copy_arr = [...arr];
+    // loop through index of arr
+    var index = 0;
+    while (index < copy_arr.length - 1) {
+        // check the same adjacent index
+        const adjacent = index + 1;
+        while (copy_arr[index] === copy_arr[adjacent])
+            // remove the same adjacent element
+            copy_arr.splice(adjacent, 1);
+        index++;
+    }
+    //save ouput
+    obj['output'] = copy_arr
     return obj;
 }
 const number_outlier = arr => {
-    //creat object
-    const obj = {};
-    //save input to obj
-    obj["input"] = arr;
-    //count odd and even number
-    var count_odd=0;
-    var count_even=0;
-    for(var i=0; i<3; i++){
-        if(arr[i] % 2 ==0)
-            count_even ++;
-        else 
-            count_odd ++;
-    }
-    //find a single integer N
-    var i=0;
-    let single_N=0;
-    if(count_even > count_odd){
-        while(arr[i] % 2 ===0)
-            i++
-        single_N = arr[i];
-    } 
-    else{
-        while(arr[i]% 2 !==0)
-            i++;
-        single_N = arr[i];
-    } 
-    //save output to obj
-    obj["output"]= single_N;
+    // create object
+    obj={}
+    // save input
+    obj['input'] = arr;
+    // create amount of even and odd number in arr
+    var count_even = 0;
+    var count_odd = 0;
+    // create variable store result
+    var number_even;
+    var number_odd;
+    var result;
+    // loop through index of arr
+    for (var index = 0; index < arr.length; index++) {
+        // check val is even or odd
+        if (arr[index] % 2 == 0) {
+            // increase amount of even
+            count_even++;
+            // store even number 
+            number_even = arr[index];
+        }
+        else {
+            // increase amount of odd
+            count_odd++;
+            // store odd number 
+            number_odd = arr[index];
+        }
+        // check amount of even and odd number
+        if (count_even > 0 && count_odd > 0 && count_even !== count_odd) {
+            //check a single integer N is even or odd number
+            if (count_odd === 1){
+                result = count_odd;
+                break;
+            }
+            else {
+                result = count_even;
+                break;
+            }
+        }
+    };
+    // save output
+    obj['output'] = result;
     return obj;
-        
 }
 // write all to result to file exercise10.json
 let data = {
-    exercise_01_1: (find_element_same(["3", 3, 3, 3, 3, 4, 4, 4], ["avd", 1, 3, 3])),
-    exercise_01_2: (find_element_different(["3", 3, 3, 3, 3, 4, 4, 4], ["avd", 1, 3, 3])),
-    exercise_02: (to_upper_first_character("nguyen tuan thanh")),
+    exercise_01_1: (find_element_same(["3", 3, 3, 3, 3, 4, 4, 4,"   ",""], ["avd", 1, 3, 3,""," "])),
+    exercise_01_2: (find_element_different(["3", 3, 3, 3, 3, 4, 4, 4,""], ["avd", 1, 3, 3,"   "])),
+    exercise_02: (to_upper_first_character("   toi ten la abcd 5678    ")),
     exercise_03: (sum_is_odd_even([0, -1, -5])),
     exercise_04: (lots_of_math(7, 2, 3, 13)),
     exercise_05: (middle_character("test")),

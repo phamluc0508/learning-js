@@ -13,6 +13,6 @@ const lots_of_math = (a, b, c, d) => {
     const multiplied = sum * minus;
     console.log(`sum multiplied minus: ${multiplied}`);
     // return the third number printed modulo a
-    return multiplied % a === -0 ? 0 : multiplied % a;
+    return multiplied % a;
 }
 console.log(lots_of_math(a, b, c, d));
